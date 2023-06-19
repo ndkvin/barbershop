@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->string('slug');
             $table->integer('price');
             $table->integer('stock');
             $table->timestamps();
