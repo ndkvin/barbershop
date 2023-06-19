@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="index.html" class="waves-effect">
+                    <a href="{{ route("admin.barberman.index") }}" class="waves-effect">
                       <i class="mdi mdi-human-male-male"></i>
                       <span style="color: #FFFBFF">Barber</span>
                     </a>
@@ -34,13 +34,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="index.html" class="waves-effect">
+                    <a href="{{ route("admin.booking.index") }}" class="waves-effect">
                       <i class="mdi mdi-calendar-month-outline"></i>
                       <span style="color: #FFFBFF">Booking</span>
                     </a>
                 </li>
                 <li>
-                    <a href="index.html" class="waves-effect">
+                    <a href="{{ route("admin.order.index") }}" class="waves-effect">
                       <i class="mdi mdi-reorder-horizontal"></i>
                       <span style="color: #FFFBFF">Order</span>
                     </a>

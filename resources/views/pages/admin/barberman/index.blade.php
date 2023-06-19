@@ -21,22 +21,22 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-flex align-items-center justify-content-between">
-                <h4 class="mb-0 font-size-18">Product</h4>
+                <h4 class="mb-0 font-size-18">Barberman</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Admin</a></li>
-                        <li class="breadcrumb-item active">Product</li>
+                        <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
+                        <li class="breadcrumb-item active">Barberman</li>
                     </ol>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- end page title -->
     <div class="d-flex justify-content-end align-items-center mb-3">
         <button type="button" class="btn mr-3" data-toggle="modal" data-target="#create"
             style="background: #C38D58; color: white">
             <i class="mdi mdi-plus"></i>
-            Create Product
+            Create Barberman
         </button>
         <nav>
             <ul class="pagination m-0">
@@ -63,76 +63,31 @@
     </div>
 
     <div class="card-deck row">
-        @for ($i = 0; $i < 12; $i++)
-            <div class="mx-auto mx-md-0 col-10 col-md-3 mt-3">
-                <div class="card rounded rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+        @for ($i = 0; $i < 9; $i++)
+            <div class="mx-auto mx-md-0 col-10 col-md-4 mt-3">
+                <div class="card rounded-xl">
+                    <img src="https://images.unsplash.com/photo-1532710093739-9470acff878f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                         class="card-img-top" alt="barber image">
                     <div class="card-body">
-
-                        <div class="d-flex justify-content-between">
-                            <h5 class="card-title">Hair Powder</h5>
-                            <h5 class="card-title text-warning"><i class="mdi mdi-star"></i><i class="mdi mdi-star"></i><i
-                                    class="mdi mdi-star"></i><i class="mdi mdi-star-half"></i><i
-                                    class="mdi mdi-star-outline"></i></h5>
-                        </div>
-                        <div style="font-weight: 700;color: #000000">
-                            Rp50.000
-                        </div>
+                        <h5 class="card-title">Lincoln Torff</h5>
+                        <button type="button" class="btn mr-3 text-white" data-toggle="modal" data-target="#edit"
+                            style="background: grey">
+                            Edit<i class="ml-2 mdi mdi-square-edit-outline"></i>
+                        </button>
+                        <button type="button" class="btn mr-3 btn-danger text-white"
+                            data-toggle="modal"data-target="#delete">
+                            Delete<i class="ml-2 mdi mdi-delete-outline"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         @endfor
     </div>
+
+
+
+
     <!--end row-->
-
-    <div class="row mt-5">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Products</h4>
-
-                    <div class="table-responsive">
-                        <table id="products" class="table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Stock</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-
-
-                            <tbody>
-                                @foreach ($products as $product)
-                                    <tr>
-                                        <td>{{ $product->id }}</td>
-                                        <td>{{ $product->name }}</td>
-                                        <td>{{ $product->price }}</td>
-                                        <td>{{ $product->stock }}</td>
-                                        <td>
-                                            <button type="button" class="btn text-dark" data-toggle="modal"
-                                                data-target="#edit">
-                                                <i class="mdi mdi-circle-edit-outline"></i>
-                                            </button>
-
-                                            <button type="button" class="btn text-danger" data-toggle="modal"
-                                                data-target="#delete">
-                                                <i class="mdi mdi-delete"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     {{-- create modal --}}
     <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -140,32 +95,35 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Create Product</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Create Barber</h5>
                     <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.product.update', 1) }}">
+                    <form action="{{ route('admin.barberman.store', 1) }}" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Name"
-                                name="name">
+                            <input type="text" id="name" class="form-control" placeholder="Name" name="name">
                         </div>
                         <div class="form-group">
                             <label for="price">Price</label>
                             <input type="price" id="price" class="form-control" placeholder="Price">
                         </div>
                         <div class="form-group">
-                            <label for="stock">Stock</label>
-                            <input type="stock" id="stock" class="form-control" placeholder="Stock">
+                            <label>Image</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="image" id="image">
+                                <label class="custom-file-label" for="image">Choose file</label>
+                            </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger waves-effect waves-light"
                         data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary waves-effect waves-light">Save changes</button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light">Save
+                        changes</button>
                 </div>
             </div>
         </div>
@@ -177,33 +135,47 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Barber</h5>
                     <button type="button" class="close waves-effect waves-light" data-dismiss="modal"
                         aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.product.update', 1) }}">
+                    <form action="{{ route('admin.barberman.store', 1) }}" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" class="form-control" placeholder="Name"
                                 name="name">
                         </div>
                         <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Email"
+                                name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" class="form-control" placeholder="Password"
+                                name="password">
+                        </div>
+                        <div class="form-group">
                             <label for="price">Price</label>
                             <input type="price" id="price" class="form-control" placeholder="Price">
                         </div>
                         <div class="form-group">
-                            <label for="stock">Stock</label>
-                            <input type="stock" id="stock" class="form-control" placeholder="Stock">
+                            <label>Image</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="image" id="image">
+                                <label class="custom-file-label" for="image">Choose file</label>
+                            </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger waves-effect waves-light"
                         data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary waves-effect waves-light">Save changes</button>
+                    <button type="button" class="btn btn-primary waves-effect waves-light">Save
+                        changes</button>
                 </div>
             </div>
         </div>
@@ -222,7 +194,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure want to delete this product?
+                    Are you sure want to delete this barberman?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger waves-effect waves-light"
@@ -232,12 +204,5 @@
             </div>
         </div>
     </div>
-@endsection
 
-
-@section('scripts')
-
-    <script>
-        $("#products").dataTable();
-    </script>
 @endsection
