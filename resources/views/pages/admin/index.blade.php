@@ -4,7 +4,8 @@
 
 @section('heads')
     <style>
-        #products_filter,
+        #order_filter,
+        #booking_filter,
         .pagination {
             display: flex;
             justify-content: end
