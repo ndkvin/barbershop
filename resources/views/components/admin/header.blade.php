@@ -11,7 +11,7 @@
             <div class="dropdown d-inline-block ml-2">
                 <button type="button" class="btn header-item waves-effect" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <span class="d-none d-sm-inline-block ml-1" style="color: #FFFBFF">Donald M.</span>
+                    <span class="d-none d-sm-inline-block ml-1" style="color: #FFFBFF">Hi, {{ auth()->user()->name }}</span>
                     <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">

@@ -24,7 +24,7 @@
 
     <!-- Begin page -->
     <div id="layout-wrapper">
-        <div class="header-border"></div>
+        <div class="header-border" style="background: #3C3A39"></div>
         @include('components.admin.header')
 
         <!-- ========== Left Sidebar Start ========== -->
@@ -116,9 +116,6 @@
 
     <!-- Datatables init -->
     <script src="/assets/pages/datatables-demo.js"></script>
-
-    <!-- App js -->
-    <script src="/assets/js/theme.js"></script>
     @yield('scripts')
 </body>
 
