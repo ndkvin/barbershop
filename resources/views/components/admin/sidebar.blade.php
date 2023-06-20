@@ -23,25 +23,25 @@
                 </li>
                 <li>
                     <a href="{{ route("admin.barberman.index") }}" class="waves-effect">
-                      <i class="mdi mdi-human-male-male"></i>
+                      <i class="feather-users"></i>
                       <span style="color: #FFFBFF">Barber</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route("admin.product.index") }}" class="waves-effect">
-                      <i class="mdi mdi-home-analytics"></i>
+                      <i class="feather-shopping-bag"></i>
                       <span style="color: #FFFBFF">Product</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route("admin.booking.index") }}" class="waves-effect">
-                      <i class="mdi mdi-calendar-month-outline"></i>
+                      <i class="feather-calendar"></i>
                       <span style="color: #FFFBFF">Booking</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route("admin.order.index") }}" class="waves-effect">
-                      <i class="mdi mdi-reorder-horizontal"></i>
+                      <i class="feather-list"></i>
                       <span style="color: #FFFBFF">Order</span>
                     </a>
                 </li>
@@ -50,7 +50,7 @@
 
                 <li class="mt-auto">
                     <a  class="waves-effect" onclick="$('#logout').click()">
-                      <i class="mdi mdi-logout"></i>
+                      <i class="feather-log-out"></i>
                       <span style="color: #FFFBFF">Logout</span></a>
                     <form action="{{ route("logout") }}" method="POST">
                       @csrf

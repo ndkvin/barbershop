@@ -4,6 +4,14 @@ use App\Http\Controllers\Admin\BarbermanConroller;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\OrderController;
+
+use App\Http\Controllers\Customer\EditCustomerController;
+use App\Http\Controllers\Customer\HistoryCustomerController;
+
+use App\Http\Controllers\Barber\EditBarberController;
+
+use App\Http\Controllers\LandingPage\LandingPageController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,4 +49,30 @@ Route::group([
   Route::resource('booking', BookingController::class)->except(['create', 'edit']);
 });
 
+Route::group([
+  'prefix' => 'barberman',
+  'middleware' => ['auth', 'barberman'],
+  'as' => 'barberman.',
+], function() {
+  Route::get('/', function() {
+    return view('pages.barber.index');
+  })->name('dashboard');
+  Route::resource('edit_profile', EditBarberController::class);
+});
+
+Route::group([
+  'prefix' => 'customer',
+  'middleware' => ['auth', 'customer'],
+  'as' => 'customer.',
+], function() {
+  Route::get('/', function() {
+    return view('pages.customer.index');
+  })->name('dashboard');
+  Route::resource('edit_profile', EditCustomerController::class);
+  Route::resource('history', HistoryCustomerController::class);
+});
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/landingpage', [App\Http\Controllers\LandingPage\LandingPageController::class, 'index'])->name('landingpage');
