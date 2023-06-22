@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Login Controller
     |--------------------------------------------------------------------------
@@ -19,28 +19,42 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+  use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+  /**
+   * Where to redirect users after login.
+   *
+   * @var string
+   */
+  protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+    $this->middleware('guest')->except('logout');
+  }
+
+  // change view
+  public function showLoginForm()
+  {
+    return view('pages.auth.login');
+  }
+
+  // change redirect
+  protected function redirectTo()
+  {
+    if (auth()->user()->role == 'ADMIN') {
+      return route('admin.dashboard');
     }
-
-    // change view
-    public function showLoginForm()
-    {
-        return view('pages.auth.login');
+    if (auth()->user()->role == 'CUSTOMER') {
+      return route('customer.history.index');
     }
+    if (auth()->user()->role == 'BARBERMAN') {
+      return route('barberman.edit_profile.index');
+    }
+  }
 }
