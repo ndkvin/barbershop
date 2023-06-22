@@ -25,11 +25,6 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes([
   'reset' => false,
   'verify' => false,
@@ -54,9 +49,6 @@ Route::group([
   'middleware' => ['auth', 'barberman'],
   'as' => 'barberman.',
 ], function() {
-  Route::get('/', function() {
-    return view('pages.barber.index');
-  })->name('dashboard');
   Route::resource('edit_profile', EditBarberController::class);
 });
 
@@ -72,7 +64,4 @@ Route::group([
   Route::resource('history', HistoryCustomerController::class);
 });
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/landingpage', [App\Http\Controllers\LandingPage\LandingPageController::class, 'index'])->name('landingpage');
+Route::get('/', [App\Http\Controllers\LandingPage\LandingPageController::class, 'index'])->name('home');
